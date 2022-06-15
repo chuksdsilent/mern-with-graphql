@@ -1,0 +1,36 @@
+{
+  "name": "ecommerce-backend",
+  "description": "This is project built by a group of nodejs beginners who gathered themselves as a community to build a project and learn more about nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sophiscated-Project-Dev/ecommerce-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sophiscated-Project-Dev/ecommerce-backend/issues"
+  },
+  "homepage": "https://github.com/Sophiscated-Project-Dev/ecommerce-backend#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "colors": "^1.4.0",
+    "config": "^3.3.7",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "express-graphql": "^0.12.0",
+    "express-validator": "^6.14.1",
+    "graphql": "^15.8.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.3.8"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.1",
+    "nodemon": "^2.0.16"
+  }
+}
