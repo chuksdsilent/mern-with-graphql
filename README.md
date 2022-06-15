@@ -1,5 +1,5 @@
-# Ecommerce Backend
+# MERN WITH GRAPHQL
 
-This is project built by a group of nodejs beginners who gathered themselves as a community to build a project and learn more about nodejs
+This is project was build with nodejs and grapql.
 
 ## Features
