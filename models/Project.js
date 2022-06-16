@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const ClientSchema = new mongoose.Schema({
+const ProjectSchema = new mongoose.Schema({
   name: {
     type: String,
   },
@@ -11,10 +11,10 @@ const ClientSchema = new mongoose.Schema({
     type: String,
     enum: ["Not Started", "In Progress", "Completed"],
   },
-  clientId: {
+  ClientId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Client",
+    ref: "Project",
   },
 });
 
-module.exports = mongoose.model("Client", ClientSchema);
+module.exports = mongoose.model("Project", ProjectSchema);
