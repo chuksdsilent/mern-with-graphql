@@ -1,17 +1,18 @@
 import { gql, useQuery } from "@apollo/client";
 import ClientRow from "./ClientRow";
 import { GET_CLIENTS } from "./queries/clientsqueries";
+
 import { Spinner } from "./Spinner";
 export const Clients = () => {
   const { loading, error, data } = useQuery(GET_CLIENTS);
 
   if (loading) return <Spinner />;
-  console.log(data.clients);
+
   if (error) return <p>Something went wrong</p>;
   return (
     <>
       {!loading && !error && (
-        <table className="table table-hover table-sm mt-3">
+        <table className="table table-hover table-sm table-bordered mt-3">
           <thead>
             <tr>
               <th>Name</th>
