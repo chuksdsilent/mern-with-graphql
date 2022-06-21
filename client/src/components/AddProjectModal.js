@@ -4,20 +4,36 @@ import { useMutation, useQuery } from "@apollo/client";
 import { ADD_CLIENT } from "./mutations/clientMutations";
 import { GET_PROJECTS } from "./queries/projectQueries";
 import { GET_CLIENTS } from "./queries/clientsqueries";
+import { ADD_PROJECT } from "./mutations/ProjectMutations";
 
 export default function AddProjectModal() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [clientId, setClientId] = useState("");
   const [status, setStatus] = useState("new");
-
   const { loading, error, data } = useQuery(GET_CLIENTS);
 
+  const [addProject] = useMutation(ADD_PROJECT, {
+    variables: {
+      name,
+      description,
+      status,
+      clientId,
+    },
+    update(cache, { data: { addProject } }) {
+      const { projects } = cache.readQuery({ query: GET_PROJECTS });
+      cache.writeQuery({
+        query: GET_PROJECTS,
+        data: { projects: [...projects, addProject] },
+      });
+    },
+  });
   const onSubmit = e => {
     e.preventDefault();
     if (name === "" || description === "" || status === "") {
       alert("Please fill the form");
     } else {
+      addProject(name, description, clientId, status);
       setName("");
       setDescription("");
       setStatus("new");
@@ -75,7 +91,7 @@ export default function AddProjectModal() {
                       />
                     </div>
                     <div className="mb-3">
-                      <label className="form-label">Email</label>
+                      <label className="form-label">Description</label>
                       <textarea
                         className="form-control"
                         id="description"
@@ -84,7 +100,7 @@ export default function AddProjectModal() {
                       ></textarea>
                     </div>
                     <div className="mb-3">
-                      <label className="form-label">Phone</label>
+                      <label className="form-label">Status</label>
                       <select
                         name=""
                         className="form-select"
